@@ -1,0 +1,148 @@
+// config.json — time-based permission tiers
+//
+// Format: "<duration>": ["<permission>", ...]
+//   duration = one or more <number><unit> pairs concatenated (e.g. "1minute1day" = 1 min + 1 day)
+//   units    = second | minute | hour | day (case-insensitive; unknown units = 0, fail silently)
+//
+// Each key creates a permission group ("group.<key>") with an ace for every permission in its array.
+// Tracked playtime accrues at real time. Players accumulate ALL tiers they've crossed
+// (not just the highest), and get re-synced automatically when a new tier unlocks.
+// Empty arrays ([]) are valid — creates the tier/group with no permissions attached.
+{
+  "1minute": [
+    "vMenu.Enhanced.Menus.CharacterCreator.Menu",
+    "vMenu.Enhanced.Menus.CharacterCreator.Create",
+    "vMenu.Enhanced.Menus.CharacterCreator.Spawn",
+    "vMenu.Enhanced.Menus.CharacterCreator.SetDefault",
+    "vMenu.Enhanced.Menus.PlayerAppearance.Menu",
+    "vMenu.Enhanced.Menus.PlayerAppearance.Customize",
+    "vMenu.Enhanced.Menus.PlayerAppearance.WalkingStyle",
+    "vMenu.Enhanced.Menus.MiscSettings.All",
+    "vMenu.Enhanced.Menus.DisplaySettings.HideHud",
+    "vMenu.Enhanced.Menus.DisplaySettings.HideRadar",
+    "vMenu.Enhanced.Menus.DisplaySettings.LocationBlips",
+    "vMenu.Enhanced.Menus.DisplaySettings.ShowCoordinates",
+    "vMenu.Enhanced.Menus.DisplaySettings.ShowLocation",
+    "vMenu.Enhanced.Menus.TeleportMenu.Menu",
+    "vMenu.Enhanced.Menus.TeleportMenu.Waypoint",
+    "vMenu.Enhanced.Menus.PlayerOptions.Menu",
+    "vMenu.Enhanced.Menus.PlayerOptions.CleanPlayer",
+    "vMenu.Enhanced.Menus.PlayerOptions.ClearBlood",
+    "vMenu.Enhanced.Menus.PlayerOptions.DryPlayer",
+    "vMenu.Enhanced.Menus.PlayerOptions.MpStats",
+    "vMenu.Enhanced.Menus.PlayerOptions.Suicide"
+  ],
+  "5minute": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Menu",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Compacts",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Sedans",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Coupes",
+    "vMenu.Enhanced.Menus.VehicleOptions.Menu",
+    "vMenu.Enhanced.Menus.VehicleOptions.Doors",
+    "vMenu.Enhanced.Menus.VehicleOptions.Engine",
+    "vMenu.Enhanced.Menus.VehicleOptions.ToggleEngine",
+    "vMenu.Enhanced.Menus.VehicleOptions.Lights",
+    "vMenu.Enhanced.Menus.VehicleOptions.RepairVehicle",
+    "vMenu.Enhanced.Menus.WeaponOptions.Menu",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.melee",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.throwables",
+    "vMenu.Enhanced.Menus.WeaponOptions.Snowball",
+    "vMenu.Enhanced.Menus.SavedVehicles.All",
+    "vMenu.Enhanced.Menus.PedModels.Menu",
+    "vMenu.Enhanced.Menus.PedModels.Categories.main",
+    "vMenu.Enhanced.Menus.PedModels.Categories.male",
+    "vMenu.Enhanced.Menus.PedModels.Categories.female"
+  ],
+  "15minute": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Cycles",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Motorcycles",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Suvs",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Vans",
+    "vMenu.Enhanced.Menus.VehicleOptions.All",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.handguns",
+    "vMenu.Enhanced.Menus.PersonalVehicle.All",
+    "vMenu.Enhanced.Menus.SavedPeds.All",
+    "vMenu.Enhanced.Menus.TeleportMenu.Category",
+    "vMenu.Enhanced.Menus.TeleportMenu.Coords",
+    "vMenu.Enhanced.Menus.PlayerOptions.FastRun",
+    "vMenu.Enhanced.Menus.PlayerOptions.FastSwim",
+    "vMenu.Enhanced.Menus.PlayerOptions.Scenarios"
+  ],
+  "30minute": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Commercial",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.OffRoad",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Utility",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Industrial",
+    "vMenu.Enhanced.Menus.VehicleSpawner.AllowKeepPreviousVehicle",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.shotguns",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.sub_light_machine_guns",
+    "vMenu.Enhanced.Menus.WeaponLoadouts.All",
+    "vMenu.Enhanced.Menus.PedModels.Categories.All",
+    "vMenu.Enhanced.Menus.PedModels.SpawnByName",
+    "vMenu.Enhanced.Menus.DisplaySettings.NightVision",
+    "vMenu.Enhanced.Menus.DisplaySettings.ThermalVision",
+    "vMenu.Enhanced.Menus.DisplaySettings.Timecycles",
+    "vMenu.Enhanced.Menus.DisplaySettings.Forecast",
+    "vMenu.Enhanced.Menus.DisplaySettings.VehicleHealth",
+    "vMenu.Enhanced.Menus.DisplaySettings.OverheadNames",
+    "vMenu.Enhanced.Menus.DisplaySettings.PlayerBlips",
+    "vMenu.Enhanced.Menus.PlayerOptions.MaxHealth",
+    "vMenu.Enhanced.Menus.PlayerOptions.MaxArmor",
+    "vMenu.Enhanced.Menus.PlayerOptions.StayInVehicle"
+  ],
+  "1hour": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Service",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.SportsClassics",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Muscle",
+    "vMenu.Enhanced.Menus.VehicleSpawner.SpawnByName",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.sniper_rifles",
+    "vMenu.Enhanced.Menus.WeaponOptions.Parachute",
+    "vMenu.Enhanced.Menus.WeaponOptions.Modify",
+    "vMenu.Enhanced.Menus.WeaponOptions.GetAll",
+    "vMenu.Enhanced.Menus.CharacterCreator.OnlineOutfits",
+    "vMenu.Enhanced.Menus.CharacterCreator.Presets",
+    "vMenu.Enhanced.Menus.CharacterCreator.PresetsManage",
+    "vMenu.Enhanced.Menus.CharacterCreator.Save"
+  ],
+  "2hour": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Sports",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.OpenWheel",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.assault_rifles",
+    "vMenu.Enhanced.Menus.WeaponOptions.SetAllAmmo",
+    "vMenu.Enhanced.Menus.WeaponOptions.NoReload"
+  ],
+  "4hour": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Super",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Boats",
+    "vMenu.Enhanced.Menus.WeaponOptions.Categories.heavy_weapons",
+    "vMenu.Enhanced.Menus.PlayerOptions.Godmode",
+    "vMenu.Enhanced.Menus.PlayerOptions.Invisible",
+    "vMenu.Enhanced.Menus.PlayerOptions.SuperJump",
+    "vMenu.Enhanced.Menus.PlayerOptions.UnlimitedOxygen",
+    "vMenu.Enhanced.Menus.PlayerOptions.NoRagdoll",
+    "vMenu.Enhanced.Menus.PlayerOptions.NoHelmet",
+    "vMenu.Enhanced.NoClip"
+  ],
+  "8hour": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Helicopters",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Planes",
+    "vMenu.Enhanced.Menus.VehicleSpawner.SpawnLimitTier2",
+    "vMenu.Enhanced.Menus.WeaponOptions.UnlimitedAmmo",
+    "vMenu.Enhanced.Menus.WeaponOptions.RemoveAll",
+    "vMenu.Enhanced.Menus.WeaponOptions.SpawnByName",
+    "vMenu.Enhanced.Menus.PlayerOptions.NeverWanted",
+    "vMenu.Enhanced.Menus.PlayerOptions.SetWanted",
+    "vMenu.Enhanced.Menus.PlayerOptions.Freeze",
+    "vMenu.Enhanced.Menus.PlayerOptions.Ignored",
+    "vMenu.Enhanced.Menus.PlayerOptions.SetBlood",
+    "vMenu.Enhanced.Menus.TimeOptions.Menu"
+  ],
+  "1day": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Emergency",
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Trains"
+  ],
+  "3day": [
+    "vMenu.Enhanced.Menus.VehicleSpawner.Categories.Military",
+    "vMenu.Enhanced.Menus.VehicleSpawner.SpawnLimitTier3"
+  ]
+}

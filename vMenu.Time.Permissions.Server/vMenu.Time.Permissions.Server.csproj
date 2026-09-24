@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>14</LangVersion>
+        <RootNamespace>vMenu.Time.Permissions.Server</RootNamespace>
+
+        <Configurations>Debug;Release</Configurations>
+        <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <GenerateDependencyFile>false</GenerateDependencyFile>
+        <DebugType>none</DebugType>
+
+        <OutputPath>..\Resource\vMenu.Time.Permissions\server</OutputPath>
+    </PropertyGroup>
+    
+    <Target Name="RemoveHostAssemblies" AfterTargets="ResolveReferences">
+        <ItemGroup>
+            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)"
+                                     Condition="'%(ReferenceCopyLocalPaths.Filename)' == 'CitizenFX.Base'
+                    or '%(ReferenceCopyLocalPaths.Filename)' == 'MessagePack'
+                    or '%(ReferenceCopyLocalPaths.Filename)' == 'MessagePack.Annotations'
+                    or '%(ReferenceCopyLocalPaths.Filename)' == 'Microsoft.NET.StringTools'" />
+        </ItemGroup>
+    </Target>
+    
+    <ItemGroup>
+        <None Include="Resources\config.json" CopyToOutputDirectory="PreserveNewest" >
+            <Link>..\config.json</Link>
+        </None>
+        <None Include="Resources\fxmanifest.lua" CopyToOutputDirectory="PreserveNewest">
+            <Link>..\fxmanifest.lua</Link>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CitizenFX.FiveM.Server" Version="0.0.4-alpha" />
+    </ItemGroup>
+
+</Project>
