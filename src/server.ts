@@ -117,7 +117,7 @@ function refreshPermissions(...serverIds: number[]): void {
 
 /** Resource KVP ints are 32-bit signed, so clamp instead of wrapping negative. */
 function saveKvp(id: string, totalMs: number): void {
-    SetResourceKvpInt(id, Math.max(0, Math.min(Math.floor(totalMs), INT32_MAX)));
+    SetResourceKvpInt(id, Math.max(0, Math.min(Math.floor(totalMs/1000), INT32_MAX)));
 }
 
 function logError(tag: string, message: string): void {
@@ -187,7 +187,7 @@ function updatePlayerTimes(): void {
         if (!existing) {
             playerDatas.set(discordId, {
                 lastUpdate: now,
-                totalTime: GetResourceKvpInt(discordId),
+                totalTime: GetResourceKvpInt(discordId) * 1000,
             });
             continue;
         }
